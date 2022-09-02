@@ -1,0 +1,27 @@
+canvas{
+    box-shadow: 10px 10px 10px gray;
+    border-radius: 10;
+}
+body{
+    background-color: lightblue;
+    background-size: cover;
+    background-position: center;
+}
+.heading
+{
+width: 100%;
+margin-top: 15px;
+}
+
+#status
+{
+font-size: 20px;
+}
+h3{
+    font-size: 30px;
+}
+.btn-default{
+    width:45%;
+    font-size: large;
+    border-radius: 50px;
+}
