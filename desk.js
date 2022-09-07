@@ -1,5 +1,6 @@
 img="";
 statuses='';
+object=[];
 function preload(){
     img=loadImage('desk.jpeg');
 }
@@ -11,12 +12,18 @@ function setup(){
 }
 function draw(){
     image(img,0,0,640,420);
-    fill("red");
-    textSize(18);
-    text("Desk",100,230);
-    noFill();
-    stroke("red");
-    rect(85,200,500,200);
+    if (statuses != "") {
+        document.getElementById("status").innerHTML="Objects Detected"
+        for (var i = 0; i < object.length; i++) {
+            fill("red");
+            percent = floor(object[i].confidence * 100);
+            textSize(18);
+            text(object[i].label + " " + percent + "%", object[i].x + 15, object[i].y + 15);
+            noFill();
+            stroke("red");
+            rect(object[i].x, object[i].y, object[i].width, object[i].height);
+        }
+    }
 }
 function modelLoaded(){
     console.log('Model has Loaded');
@@ -29,5 +36,6 @@ function gotResult(error,results){
     }    
     else{
         console.log(results);
+        object=results;
     }
 }
